@@ -23,8 +23,8 @@ public class AbstractPage {
         }
 
     public void implicitWaitForListOfElement(List<WebElement> element) {
-        WebDriverWait implicitWaitTime = new WebDriverWait(driver, 20);
-        implicitWaitTime.until(ExpectedConditions.elementToBeClickable((WebElement) element));
+        WebDriverWait implicitWaitTime = new WebDriverWait(driver, 30);
+        implicitWaitTime.until(ExpectedConditions.visibilityOfAllElements(element));
     }
     }
 

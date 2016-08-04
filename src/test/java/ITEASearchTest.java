@@ -1,25 +1,40 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+
 /**
  * A test for verifying search results in Google.
  */
 public class ITEASearchTest {
 
     final static String searchTerm = "ITEA";
+    final static String searchTerm1 = "itea";
+    HomePage homePage = new HomePage();
+    SearchResultsPage searchResultsPage = homePage.fillSearchForm("ITEA");
+    SecondSearchResultsPage secondSearchResultsPage = searchResultsPage.changeResultsPage();
 
     @Test
     public void ITEASearchTest() {
-        HomePage homePage = new HomePage();
-        SearchResultsPage searchResultsPage = homePage.fillSearchForm("ITEA");
-        Assert.assertNotNull(homePage.isSearchResultsFieldDisplayed(), "Search results list is not returned");;
+        Assert.assertNotNull(homePage.isSearchResultsFieldDisplayed(), "Search results list is not returned");
     }
 
     @Test
     public void ITEASearchResultsCountTest() {
-        HomePage homePage = new HomePage();
-        SearchResultsPage searchResultsPage = homePage.fillSearchForm("ITEA");
-        Assert.assertEquals(searchResultsPage.searchResultsFieldsSize(), 8, "There are not 8 search results displayed on search results page");;
+        Assert.assertEquals(searchResultsPage.searchResultsFieldsSize(),8, "There are not 8 search results displayed on search results page");
     }
 
+    @Test
+    public void SearchTermTest() {
+        Assert.assertTrue(searchResultsPage.isSearchTermContained(searchTerm, searchTerm1), "Every result item doesn't contains search term");
+    }
+
+    @Test
+    public void ITEASecondSearchResultsCountTest() {
+        Assert.assertEquals(secondSearchResultsPage.searchResultsFieldsSize(),10, "There are not 10 search results displayed on search results page");
+    }
+
+    @Test
+    public void SecondSearchTermTest() {
+        Assert.assertTrue(secondSearchResultsPage.isSearchTermContained(searchTerm, searchTerm1), "Every result item doesn't contains search term");
+    }
 }
