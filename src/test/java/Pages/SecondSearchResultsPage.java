@@ -1,3 +1,5 @@
+package Pages;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -7,7 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by ira on 05.08.16.
+ * Page Object for SearchResults page.
+ *
+ * Defining WebElements by locators.
  */
 public class SecondSearchResultsPage extends SearchResultsPage {
 
@@ -16,10 +20,18 @@ public class SecondSearchResultsPage extends SearchResultsPage {
     @FindBy(css = ".f.kv._SWb")
     private List<WebElement> searchResultsField;
 
+    /**
+     * Factory class to make using Page Objects simpler and easier.
+     */
     public SecondSearchResultsPage() {
         PageFactory.initElements(driver, this);
         implicitWaitForElement(searchField);
     }
+
+    /**
+     * A method searchResultsFieldsSize counts web elements searchResultsField on the page.
+     * Use @Override to find the same web elements on a new web page.
+     */
     @Override
     public int searchResultsFieldsSize() {
         implicitWaitForListOfElement(searchResultsField);
@@ -49,8 +61,4 @@ public class SecondSearchResultsPage extends SearchResultsPage {
        }
        return isSearchTermContained;
         }
-
-
-
-
 }

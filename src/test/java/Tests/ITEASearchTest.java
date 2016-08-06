@@ -1,9 +1,14 @@
+package Tests;
+
+import Pages.HomePage;
+import Pages.SearchResultsPage;
+import Pages.SecondSearchResultsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
 /**
- * A test for verifying search results in Google.
+ * Simple tests for verifying search results in Google with search term "ITEA".
  */
 public class ITEASearchTest {
 

@@ -1,3 +1,5 @@
+package Pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,16 +18,19 @@ public class AbstractPage {
 
         public AbstractPage() {
         }
+/**
+ * Methods for waiting some web elements are loaded.
+ */
 
         public void implicitWaitForElement(WebElement element) {
             WebDriverWait implicitWaitTime = new WebDriverWait(driver, 20);
             implicitWaitTime.until(ExpectedConditions.elementToBeClickable(element));
         }
 
-    public void implicitWaitForListOfElement(List<WebElement> element) {
+        public void implicitWaitForListOfElement(List<WebElement> element) {
         WebDriverWait implicitWaitTime = new WebDriverWait(driver, 30);
         implicitWaitTime.until(ExpectedConditions.visibilityOfAllElements(element));
-    }
+         }
     }
 
 
